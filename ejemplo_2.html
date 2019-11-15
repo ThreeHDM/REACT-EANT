@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+			.slide {
+				position: absolute;
+				animation: fade 8s ease-in-out infinite 4s alternate;
+			}
+			@keyframes fade {
+                0% { opacity: 1 }
+                50% { opacity: 0 }
+                100% { opacity: 0 }
+			}
+</style>
+    <title>Document</title>
+</head>
+<body>
+
+    <main id="app"></main>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script>
+
+            //clase heredada - Es un componente de React (React.Component es el objeto padre). Puedo agregarle a lo que ya existe.
+            class Slider extends React.Component {
+                
+                //método render(): se ejecuta automaticamente con cada interacción o cambio del objeto/componente
+                render() {
+
+                    //React.createElement(htmltag, {attributes}, content)
+
+                    //1) Creo los Slides
+                    let slide1 = React.createElement("img", {
+                        //react pide que identifiquemos con key
+                        key: 1,
+                        src : "https://lorempixel.com/480/320/city",
+                        style : {
+                            animationDelay: "4s"
+                        },
+                        className: "slide"
+                        
+                    })
+
+                    let slide2 = React.createElement("img", {
+                        key: 2,
+                        src : "https://lorempixel.com/480/320/animals",
+                        style : {
+                            animationDelay: "8s"
+                        },
+                        className: "slide"
+                        
+                    })
+
+                    let slide3 = React.createElement("img", {
+                        key: 3,
+                        src : "https://lorempixel.com/480/320/animals",
+                        className: "slide"
+                        
+                    })
+                    
+                    //2) Creo el contenedor de Slides
+                    let container = React.createElement("section", {
+                        
+                        id : "fotos-random",
+                        style : {
+                            //usamos camelCase
+                            position : "relative",
+                            width : 480, //endiende que son pixeles
+                            height : 320,
+                            backgroundColor : "#651213",
+                            margin : "auto"
+
+                        }
+                    }, [slide3, slide2, slide1])
+
+                    return container
+
+
+                }
+            }
+            ///////////////////////////////////////////////////////////////////
+
+            //creo el objeto theSlider pasando como parámetro a createelement la clase Slider
+            let theSlider = new React.createElement(Slider);
+
+            console.log(theSlider)
+            ReactDOM.render(theSlider, document.getElementById('app') );
+    </script>
+</body>
+</html>
