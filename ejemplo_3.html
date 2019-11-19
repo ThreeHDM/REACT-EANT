@@ -24,7 +24,49 @@
 
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-    <script>
+    <!--Babel permite traducir JSX a JS ya que aún no es stadard-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!--Hay que agregar el type "text/babel"-->
+    <script type="text/babel">
+
+        //Componente "Saludo" - singular y Pascal
+        class Saludo extends React.Component {
+
+            //creamos un método de instancia
+            verTipo(){
+                alert(`El saludo es de tipo ${this.props.tipo}`)
+            }
+
+            render(){
+
+                let msg = this.props.tipo == 1 ? "Hola" : "Adiós"
+
+                return (
+                    //Escribo JSX tal cual como si fuera HTML ya que no es un string. 
+                    //para escribir JS en JSX uso llaves {}
+                    //Usamos bind() para decirle a verTipo quien esta dando la orden, sino toma el evento
+                    <h2 onClick={this.verTipo.bind(this)}>{msg} {this.props.nombre}!</h2>
+                )
+                
+            }
+        }
+        ///////////////////////////////////
+
+        //<Saludo /> es el equivalente de hacer un createElement de mi componente Saludo. Instancio el objeto en una sintaxis pseudo-HTML
+        let app = [
+            <Saludo nombre="Nemesis" tipo="0" key="A" />,
+            <Saludo nombre="Chris" tipo="1" key="B"/>,
+            <Saludo nombre="Jill" tipo="0" key="C"/>,
+            <Saludo nombre="Claire" tipo="1" key="D"/>
+        ]
+
+        
+        //Renderiza el componente. render() debe ejecutarse una sola vez pasando una colección de componentes
+        ReactDOM.render(app, document.querySelector("#app"))
+        
+
+
+
     </script>
 </body>
 </html>
