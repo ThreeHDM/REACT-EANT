@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+
+    <main id="app"></main>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <!--Babel permite traducir JSX a JS ya que aún no es stadard-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+    
+    class Producto extends React.Component {
+
+    render(){
+        return (
+            //ajustamos el HTML a JSX
+            <div className="card">
+            <img src={`http://lorempixel.com/400/200/${this.props.categoria}`} className="card-img-top" alt="..."></img>
+            <div className="card-body">
+                <h5 className="card-title">{this.props.nombre}</h5>
+                <p className="card-text">Ars $ {this.props.precio} | {this.props.stock} units.</p>
+                <a href="#" className="btn btn-warning">Comprar</a>
+            </div>
+            </div>
+        )
+    }
+    }
+
+    ///////////////////////////////////////////////
+    class Catalogo extends React.Component {
+        //puedo poner componentes dentro de otros componentes
+        render(){
+            return(
+                <div className="row">
+                    
+                    { 
+                    
+                        this.props.productos.map((producto, index) => 
+                        <div className="col-4" key={index}>
+                        <Producto nombre={producto.n} stock={producto.s} precio={producto.p} categoria={producto.c}  /></div>)
+                    }
+                    
+                </div>
+            )
+        }
+    }
+    ///////////////////////////////////////////////
+
+    let datos = [
+        {n:"Café", s: 500, p: 89.99, c: "nature"},
+        {n:"Agua", s: 200, p: 8.99, c: "food"},
+        {n:"Jugo", s: 15, p: 22.99, c: "cats"}
+    ]
+
+    ReactDOM.render(<Catalogo productos={datos}/>, document.querySelector("#app"))
+    
+    </script>
+</body>
+</html>
