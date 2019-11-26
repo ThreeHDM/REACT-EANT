@@ -4,6 +4,7 @@ import React from 'react';
 //si el archivo es .js o .jsx no necesita el formato
 import Logo from './components/Logo'
 import Link from './components/Link'
+import Menu from './components/Menu'
 import './App.css';
 
 const links = [
@@ -40,9 +41,9 @@ class App extends React.Component {
               false
             }
             text = "Otro link" />
-              {/*
+              {
                 <Menu items={links} />
-              */}
+              }
           </header>
         </div>
     )
