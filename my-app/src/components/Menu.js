@@ -17,7 +17,17 @@ class Menu extends React.Component {
       
     console.log(this.props.items)
 
-    const menu = this.props.items.map(e => <a key={this.makeid(5)} href = {e.url} > {e.text} </a>)
+    const menu = this.props.items.map(e => < a key = {
+          this.makeid(5)
+        }
+        href = {
+          e.url
+        }
+        target = {
+          e.blank ? "_blank" : "_self"
+        } > {
+          e.text
+        } < /a>)
 
         return (
           <div>
