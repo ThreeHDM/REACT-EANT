@@ -3,8 +3,11 @@
 import React from 'react';
 //si el archivo es .js o .jsx no necesita el formato
 import Logo from './components/Logo'
-import Link from './components/Link'
 import Menu from './components/Menu'
+import Mapa from './components/Mapa'
+import Video from './components/Video'
+
+
 import './App.css';
 
 const links = [
@@ -35,15 +38,10 @@ class App extends React.Component {
             <p>
               Edit <code>src/App.js</code> and save to reload.
             </p>
-            <Link url = "https://reactjs.org" blank={false} text="Documentación"/>
-            < Link url = "https://google.com"
-            blank = {
-              false
-            }
-            text = "Otro link" />
-              {
-                <Menu items={links} />
-              }
+              <Menu items={links} />
+              <Mapa lat="-34.6078602" long="-58.383111" zoom="15"/>
+              <Video id="-IpvJZuX_Vk" play={true} mute={true}/>
+              
           </header>
         </div>
     )
