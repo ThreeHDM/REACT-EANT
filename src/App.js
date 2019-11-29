@@ -6,6 +6,8 @@ import Logo from './components/Logo'
 import Menu from './components/Menu'
 import Mapa from './components/Mapa'
 import Video from './components/Video'
+import  Producto from './components/Producto'
+
 
 
 import './App.css';
@@ -41,7 +43,7 @@ class App extends React.Component {
               <Menu items={links} />
               <Mapa lat="-34.6078602" long="-58.383111" zoom="15"/>
               <Video id="-IpvJZuX_Vk" play={true} mute={true}/>
-              
+              <Producto />
           </header>
         </div>
     )
