@@ -7,7 +7,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -19,4 +19,11 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+body {
+  background-image: url(https://c4.wallpaperflare.com/wallpaper/410/867/750/vector-forest-sunset-forest-sunset-forest-wallpaper-thumb.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;;
 }
