@@ -1,4 +1,8 @@
 //Este archivo es mi aplicación principal
+
+import './App.css';
+
+//COMPONENTES-------------------------
 //todo componente debe importar react
 import React from 'react';
 //si el archivo es .js o .jsx no necesita el formato
@@ -9,7 +13,11 @@ import Video from './components/Video'
 //import  Producto from './components/Producto'
 import Gondola from './components/Gondola'
 
-import './App.css';
+//HELPERS----------------------------
+import AJAX from './helpers/AJAX'
+
+const api = new AJAX()
+
 
 const links = [
   {
@@ -42,12 +50,29 @@ class App extends React.Component {
   }
 
   componentDidMount(){
+    /*
     //fetch("OBTAIN THE DATA").then(CONVERSION).then(UTILIZACION);
     fetch("https://api.myjson.com/bins/1giaf3")
     .then(rta => rta.json())
     .then(data => {
       this.setState({productos : data, isLoaded: true})
     });
+    */
+   
+   
+   //Opción 1 con .then()----------------
+   api.getData("https://api.myjson.com/bins/1giaf3").then(data => {
+     this.setState({productos : data, isLoaded: true})
+   });
+
+   //Opción 2 función anónima asincrónica 
+   /*
+   let data = async function(){
+    return await api.getData("https://api.myjson.com/bins/1giaf3")
+
+   }
+   */
+
   }
 
   render() {
